@@ -8,9 +8,10 @@
 
 // Method 1:
 function reverse(str) {
-  const arr = str.split(""); // Convert string to array of characters
-  arr.reverse(); // Reverse sort the array
-  return arr.join(""); // Convert mutated array to a string
+  return str
+    .split("") // Convert string to array of characters
+    .reverse() // Reverse sort the array
+    .join(""); // Convert mutated array to a string
 }
 
 module.exports = reverse;
