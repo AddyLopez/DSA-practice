@@ -15,13 +15,25 @@
 }*/
 
 // Method 2:
-function reverse(str) {
+/* function reverse(str) {
   let reversed = ""; // Create an empty string
 
   // Iterate over each character of the string
   for (let character of str) {
     reversed = character + reversed; // Add each character to the start of 'reversed'
   }
+  return reversed; // Return the variable 'reversed'
+} */
+
+// Alternative syntax to Method 2:
+function reverse(str) {
+  let reversed = ""; // Create an empty string
+
+  // Iterate over each character of the string
+  for (let i = 0; i < str.length; i++) {
+    reversed = str[i] + reversed; // Add each character to the start of 'reversed'
+  }
+  console.log(reversed);
   return reversed; // Return the variable 'reversed'
 }
 
