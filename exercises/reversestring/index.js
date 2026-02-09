@@ -7,12 +7,12 @@
 //   reverse('Greetings!') === '!sgniteerG'
 
 // Method 1:
-/*function reverse(str) {
+function reverse(str) {
   return str
     .split("") // Convert string to array of characters
     .reverse() // Reverse sort the array
     .join(""); // Convert mutated array to a string
-}*/
+}
 
 // Method 2:
 /* function reverse(str) {
@@ -39,6 +39,7 @@ function reverse(str) {
 }
 */
 
+/*
 // Method 3:
 function reverse(str) {
   // 1) Use split method to convert string to an array of characters,
@@ -46,11 +47,9 @@ function reverse(str) {
   // 3) In callback of reduce, add each subsequent character to the beginning of the string, effectually reversing the original string passed in to the reverse function.
   // 4) Return the reversed string.
   return str.split("").reduce((accumulator, character) => {
-    debugger;
     return character + accumulator;
   }, "");
 }
-
-reverse("medieval");
+*/
 
 module.exports = reverse;
