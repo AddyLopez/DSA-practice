@@ -11,7 +11,7 @@
 function reverseInt(n) {
   // Convert number to a string, then to an array, reverse it, then join it into a string
   const reversed = n.toString().split("").reverse().join("");
-  return parseIInt(reversed) * Math.sign(n); // Return the reversed string as an integer with the proper sign
+  return parseInt(reversed) * Math.sign(n); // Return the reversed string as an integer with the proper sign
 }
 
 module.exports = reverseInt;
