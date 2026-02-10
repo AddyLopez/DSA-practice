@@ -11,13 +11,7 @@
 function reverseInt(n) {
   // Convert number to a string, then to an array, reverse it, then join it into a string
   const reversed = n.toString().split("").reverse().join("");
-
-  // If number passed in is negative, then parse the reversed string as a number multiplied by -1 and return the integer
-  if (n < 0) {
-    return parseInt(reversed) * -1;
-  }
-
-  return parseInt(reversed); // Return the reversed string as an integer
+  return parseIInt(reversed) * Math.sign(n); // Return the reversed string as an integer with the proper sign
 }
 
 module.exports = reverseInt;
