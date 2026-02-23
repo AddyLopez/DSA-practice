@@ -37,4 +37,18 @@ function anagrams(stringA, stringB) {
   return true; // If the two cases above don't apply, then the two strings ARE anagrams.
 }
 
+/*
+// Method 2:
+
+// Helper function cleans string by effectually 1) replacing punctuation and spaces with empty strings, 2) lowercasing the string, 3) splitting the string into an array of characters, 4) sorting the elements of the array from a to z,then 5) joining the elements of the array into a string.
+function cleanString(str) {
+  return str.replace(/[^\w]/g, "").toLowerCase().split("").sort().join("");
+}
+
+function anagrams(stringA, stringB) {
+  // Pass each string into the helper function and compare the results.
+  return cleanString(stringA) === cleanString(stringB); // Strict equality returning true indicates the two strings are anagrams
+}
+*/
+
 module.exports = anagrams;
