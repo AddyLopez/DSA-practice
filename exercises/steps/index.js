@@ -17,6 +17,20 @@
 //       '### '
 //       '####'
 
-function steps(n) {}
+function steps(n) {
+  // Iterate over rows
+  for (let row = 0; row < n; row++) {
+    let stair = ""; // Initialize stair to empty string
+    // Nested loop: iterate over columns
+    for (let column = 0; column < n; column++) {
+      if (column <= row) {
+        stair += "#"; // If column number is less than or equal to the row number, use addition assignment to concatenate a pound sign to 'stair'
+      } else {
+        stair += " "; // Otherwise, use addition assignment to concatenate a space to 'stair'
+      }
+    }
+    console.log(stair); // Before iterating over the next row, log the stair
+  }
+}
 
 module.exports = steps;
