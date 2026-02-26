@@ -17,6 +17,8 @@
 //       '### '
 //       '####'
 
+// Method 1: Iterative Solution
+/*
 function steps(n) {
   // Iterate over rows
   for (let row = 0; row < n; row++) {
@@ -31,6 +33,30 @@ function steps(n) {
     }
     console.log(stair); // Before iterating over the next row, log the stair
   }
+}
+*/
+
+// Method 2: Recursive Solution
+function steps(n, row = 0, stair = "") {
+  // Base case
+  if (n === row) {
+    return;
+  }
+
+  // Once the stair length has been completed (i.e. the end of a row is reached)...
+  if (n === stair.length) {
+    console.log(stair); // Log the completed stair
+    return steps(n, row + 1); // Make recursive call to the next row. 'stair' is defaulted to an empty string.
+  }
+
+  // This condition checks stair.length which is effectually a stand-in for tracking the column of each row
+  if (stair.length <= row) {
+    stair += "#";
+  } else {
+    stair += " "; // Concatenates a space (NOT an empty string)
+  }
+
+  steps(n, row, stair); // Make recursive call to next "column" in same row when visualizing the stairs as a 2D matrix. stair.length is effectually a stand-in for the column.
 }
 
 module.exports = steps;
