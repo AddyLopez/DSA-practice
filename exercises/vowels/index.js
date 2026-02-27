@@ -24,4 +24,31 @@ function vowels(str) {
   return count; // Return the total number of vowels in "str"
 }
 
+// Alternative method using for...of loop :
+/*
+function vowels(str) {
+  let count = 0;
+  const checker = ["a", "e", "i", "o", "u"];
+
+  for (let char of str.toLowerCase()) {
+    if (checker.includes(char)) {
+      count++;
+    }
+  }
+
+  return count;
+}
+  */
+
+// Alternative method using regex:
+/*
+function vowels(str) {
+  // match is String method for matching a string against a regular expression. This regex checks vowels.
+  // Option g makes sure evaluation does not halt at the first match, while option i means "case insensitive".
+  // match will evaluate to either null or an array of matched characters
+  const matches = str.match(/[aeiou]/gi);
+  return matches ? matches.length : 0; // If matches is truthy (i.e. an array), return matches.length (i.e. the total count of vowels matched); if matches is falsy (i.e. null) return 0 (i.e. zero vowels found)
+}
+*/
+
 module.exports = vowels;
