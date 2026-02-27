@@ -8,16 +8,20 @@
 //   vowels('Why?') --> 0
 
 function vowels(str) {
-  const vowelsArr = ["a", "e", "i", "o", "u"];
-  let count = 0;
+  const vowelsArr = ["a", "e", "i", "o", "u"]; // array of vowels
+  let count = 0; // counts number of vowels in "str"
 
-  str.split("").map((char) => {
-    if (vowelsArr.includes(char.toLowerCase())) {
-      count++;
-    }
-  });
+  // lowercase the string, split it into an array, map over the array of characters
+  str
+    .toLowerCase()
+    .split("")
+    .map((char) => {
+      if (vowelsArr.includes(char)) {
+        count++; // If the vowels array includes the given character, increment the count
+      }
+    });
 
-  return count;
+  return count; // Return the total number of vowels in "str"
 }
 
 module.exports = vowels;
