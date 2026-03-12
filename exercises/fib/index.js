@@ -8,6 +8,18 @@
 // Example:
 //   fib(4) === 3
 
-function fib(n) {}
+function fib(n) {
+  const series = [0, 1]; // Initialize series with first two given numbers in the series
+
+  // Iterate from index 2 up to n (inclusive)
+  for (let i = 2; i <= n; i++) {
+    const a = series[i - 1]; // a represents next previous index in series array
+    const b = series[i - 2]; // b represents second previous index in series array
+
+    series.push(a + b); // Add previous two terms (i.e. a and b) and push the value into the series array
+  }
+
+  return series[n]; // It's conventional to return the value at the nth index in the series
+}
 
 module.exports = fib;
