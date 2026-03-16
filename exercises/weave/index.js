@@ -22,8 +22,25 @@
 //    q.remove() // 2
 //    q.remove() // 'There'
 
-const Queue = require('./queue');
+const Queue = require("./queue"); // This data structure includes the add, remove, and peek methods
 
-function weave(sourceOne, sourceTwo) {}
+function weave(sourceOne, sourceTwo) {
+  const wovenQ = new Queue(); // Create new instance of Queue to combine the two quees passed in to weave function
+
+  // While loop iterates while sourceOne or sourceTwo is truthy (i.e. not undefined). (The peek method will return undefined when there are no elements left in its respective queue.)
+  while (sourceOne.peek() || sourceTwo.peek()) {
+    // Use peek to check if there are any elements left in sourceOne queue
+    if (sourceOne.peek()) {
+      wovenQ.add(sourceOne.remove()); // Remove the element from sourceOne and add the element to wovenQ
+    }
+
+    // Use peek to check if there are any elements left in sourceTwo queue
+    if (sourceTwo.peek()) {
+      wovenQ.add(sourceTwo.remove()); // Remove the element from sourceTwo and add the element to wovenQ
+    }
+  }
+
+  return wovenQ; // Return the woven queue which combines the queues sourceOne and sourceTwo
+}
 
 module.exports = weave;
