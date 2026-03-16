@@ -9,6 +9,7 @@
 //   fib(4) === 3
 
 // Iterative Solution:
+/*
 function fib(n) {
   const series = [0, 1]; // Initialize series with first two given numbers in the series
 
@@ -22,6 +23,7 @@ function fib(n) {
 
   return series[n]; // It's conventional to return the value at the nth index in the series
 }
+*/
 
 /*
 // Recursive Solution:
@@ -33,5 +35,30 @@ function fib(n) {
   return fib(n - 1) + fib(n - 2);
 }
 */
+
+// Memoized recursive solution:
+function memoize(fn) {
+  const cache = {};
+  return function (...args) {
+    if (cache[args]) {
+      return cache[args];
+    }
+
+    const result = fn.apply(this, args);
+    cache[args] = result;
+
+    return result;
+  };
+}
+
+function slowFib(n) {
+  if (n < 2) {
+    return n;
+  }
+
+  return fib(n - 1) + fib(n - 2);
+}
+
+const fib = memoize(slowFib);
 
 module.exports = fib;
