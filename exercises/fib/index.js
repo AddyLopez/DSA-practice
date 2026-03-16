@@ -38,14 +38,17 @@ function fib(n) {
 
 // Memoized recursive solution:
 function memoize(fn) {
-  const cache = {};
+  const cache = {}; // The keys of the cache object are the arguments
+
+  // returns an anonymous function. The spread syntax is used as "defensive coding" to account for any number of arguments (which here are stored as an array called "args").
   return function (...args) {
     if (cache[args]) {
-      return cache[args];
+      return cache[args]; // If the particular set of arguments has been passed into slowFib before, then return the value at cache[args].
     }
 
-    const result = fn.apply(this, args);
-    cache[args] = result;
+    // If code proceeds beyond if block above, slowFib has NOT been called before with the given set of arguments.
+    const result = fn.apply(this, args); // result stores the result from calling slowFib function so that it can be stored in the cache object before getting returned
+    cache[args] = result; // updates the cache by storing the result under the "args" key
 
     return result;
   };
@@ -56,9 +59,9 @@ function slowFib(n) {
     return n;
   }
 
-  return fib(n - 1) + fib(n - 2);
+  return fib(n - 1) + fib(n - 2); // These calls are NOT to slowFib but to the faster, memoized function fib.
 }
 
-const fib = memoize(slowFib);
+const fib = memoize(slowFib); // memoize creates the cache before slowFib is called
 
 module.exports = fib;
