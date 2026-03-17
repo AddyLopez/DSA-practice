@@ -12,8 +12,39 @@
 //     q.remove(); // returns 1
 //     q.remove(); // returns 2
 
-const Stack = require('./stack');
+const Stack = require("./stack");
 
-class Queue {}
+class Queue {
+  constructor() {
+    this.stack1 = new Stack();
+    this.stack2 = new Stack();
+  }
+
+  add(record) {
+    this.stack1.push(record);
+  }
+
+  remove() {
+    while (this.stack1.peek()) {
+      this.stack2.push(this.stack1.pop());
+    }
+    let elementToRemove = this.stack2.pop();
+    while (this.stack2.peek()) {
+      this.stack1.push(this.stack2.pop());
+    }
+    return elementToRemove;
+  }
+
+  peek() {
+    while (this.stack1.peek()) {
+      this.stack2.push(this.stack1.pop());
+    }
+    let elementToPeekAt = this.stack2.peek();
+    while (this.stack2.peek()) {
+      this.stack1.push(this.stack2.pop());
+    }
+    return elementToPeekAt;
+  }
+}
 
 module.exports = Queue;
