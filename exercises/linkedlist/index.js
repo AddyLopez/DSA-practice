@@ -15,8 +15,7 @@ class LinkedList {
   }
 
   insertFirst(data) {
-    const node = new Node(data, this.head); // Create new Node instance passing in data and assigning this.head to the next property of the node
-    this.head = node; // Reassign head property to new Node instance
+    this.head = new Node(data, this.head); // Create new Node instance passing in data and assigning this.head to the next property of the node. Reassign head property of LinkedList to new Node instance.
   }
 }
 
