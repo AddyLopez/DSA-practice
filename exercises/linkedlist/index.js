@@ -45,6 +45,14 @@ class LinkedList {
   clear() {
     this.head = null;
   }
+
+  removeFirst() {
+    if (this.head) {
+      this.head = this.head.next;
+    }
+
+    return;
+  }
 }
 
 module.exports = { Node, LinkedList };
@@ -63,4 +71,14 @@ getLast() {
         node = node.next
     }
 }
+*/
+
+// Alternative to removeFirst:
+/*
+    removeFirst() {
+        if (!this.head) {
+            return;
+        }
+        this.head = this.head.next;
+    }
 */
