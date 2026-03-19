@@ -17,6 +17,18 @@ class LinkedList {
   insertFirst(data) {
     this.head = new Node(data, this.head); // Create new Node instance passing in data and assigning this.head to the next property of the node. Reassign head property of LinkedList to new Node instance.
   }
+
+  size() {
+    let count = 0;
+    let currentNode = this.head;
+
+    while (currentNode) {
+      count++;
+      currentNode = currentNode.next;
+    }
+
+    return count;
+  }
 }
 
 module.exports = { Node, LinkedList };
