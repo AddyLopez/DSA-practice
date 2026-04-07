@@ -99,6 +99,24 @@ class LinkedList {
 
     return null; // Accounts for index being out of range, including if the list is empty
   }
+
+  removeAt(index) {
+    // If list is empty, simply return
+    if (!this.head) {
+      return;
+    }
+
+    // Manually remove first node (at index 0) by reassigning the head to next. Works even for a list of only 1 node, since next will point to null.
+    if (index === 0) {
+      this.head = this.head.next;
+    }
+
+    const previous = this.getAt(index - 1); // Reuse the getAt method to conveniently get a reference to previous node
+    if (!previous || !previous.next) {
+      return;
+    }
+    previous.next = previous.next.next; // Skips over (i.e. removes) the node at the passed-in index. "previous" now points at the next next node.
+  }
 }
 
 module.exports = { Node, LinkedList };
