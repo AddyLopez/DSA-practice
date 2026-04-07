@@ -85,10 +85,6 @@ class LinkedList {
   }
 
   getAt(index) {
-    if (!this.head) {
-      return null;
-    }
-
     let counter = 0; // Start at 0 since the nodes are zero-indexed
     let node = this.head; // Temporary variable for sake of iterating over the list of nodes
 
@@ -101,7 +97,7 @@ class LinkedList {
       node = node.next;
     }
 
-    return null;
+    return null; // Accounts for index being out of range, including if the list is empty
   }
 }
 
