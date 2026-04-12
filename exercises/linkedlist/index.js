@@ -117,6 +117,22 @@ class LinkedList {
     }
     previous.next = previous.next.next; // Skips over (i.e. removes) the node at the passed-in index. "previous" now points at the next next node.
   }
+
+  insertAt(data, index) {
+    if (!this.head) {
+      this.head = new Node(data); // If list is empty (i.e. there is no head), assign the head to the new Node passing in the data property. Then return.
+      return;
+    }
+
+    if (index === 0) {
+      this.head = new Node(data, this.head); // Manual handling of insertion at front of list. Create the new node with data, have its "next" property point to the current head (in the little-used second argument). Then update head to point to this new Node.
+      return;
+    }
+
+    const previous = this.getAt(index - 1) || this.getLast(); // Assign previous to the node immediately preceding the given index. If that value is falsy, then assign "previous" to the final node in the list.
+    const node = new Node(data, previous.next); // Create a new node and update its "next" property to "previous.next" in the second argument.
+    previous.next = node; // Update the "next" property of previous to point to the new node.
+  }
 }
 
 module.exports = { Node, LinkedList };
