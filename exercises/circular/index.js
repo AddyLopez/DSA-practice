@@ -12,6 +12,20 @@
 //   c.next = b;
 //   circular(l) // true
 
-function circular(list) {}
+function circular(list) {
+  let slow = list.getFirst(); // Same as list.head
+  let fast = list.getFirst();
+
+  while (fast.next && fast.next.next) {
+    slow = slow.next; // Advance "slow" by one node
+    fast = fast.next.next; // Advance "fast" by two nodes
+
+    if (slow === fast) {
+      return true; // If slow and fast represent identical nodes, then the list is circular.
+    }
+  }
+
+  return false; // If the while loop was exited, it means one of the conditions returned falsy (because it was null) and that there was an end to the list. Thus the list terminates and is not circular.
+}
 
 module.exports = circular;
