@@ -11,6 +11,37 @@
 //    list.insertLast('d');
 //    fromLast(list, 2).data // 'b'
 
-function fromLast(list, n) {}
+function fromLast(list, n) {
+  let trailing = list.getFirst(); // Start first pointer at head node
+  let leading = list.getAt(n); // Start second pointer at nth node ("leading" is n nodes away from "trailing")
 
+  // Exits at the end of the list when leading.next is null
+  while (leading.next) {
+    trailing = trailing.next; // Advance "trailing" by one node
+    leading = leading.next; // Advance "leading" by one node
+  }
+
+  return trailing; // Once the while loop has been exited, "trailing" represents the node "n nodes away" from the tail node
+}
+
+// Alternative solution:
+/*
+function fromLast(list, n) {
+    let trailing = list.getFirst();
+    let leading = list.getFirst();
+
+    while (n > 0) {
+        leading = leading.next;
+        n--;
+    }
+
+    while (leading.next) {
+        trailing = trailing.next;
+        leading = leading.next;
+    }
+
+  return trailing;
+}
+
+*/
 module.exports = fromLast;
