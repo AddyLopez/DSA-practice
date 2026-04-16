@@ -32,6 +32,22 @@ class Tree {
   constructor() {
     this.root = null;
   }
+
+  traverseBF(fn) {
+    const arr = [this.root];
+    while (arr.length) {
+      const node = arr.shift(); // Mutates the array, removing the first element at each iteration of the while loop
+      for (let child of node.children) {
+        arr.push(child); // This loop "unpacks" each child and pushes it individually into arr. Do NOT add children as a nested array (i.e. as a group).
+      }
+
+      fn(node); // Pass the given node into the provided function
+    }
+  }
 }
+
+/* 
+In traverseBF, the for...of loop can be replaced with the spread syntax, like this: arr.push(...node.children); Each child will be pushed individually to arr.
+*/
 
 module.exports = { Tree, Node };
