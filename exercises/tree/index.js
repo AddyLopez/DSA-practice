@@ -44,10 +44,34 @@ class Tree {
       fn(node); // Pass the given node into the provided function
     }
   }
+
+  traverseDF(fn) {
+    const arr = [this.root];
+    while (arr.length) {
+      const node = arr.shift(); // Mutates the array, removing the first element at each iteration of the while loop
+      arr.unshift(...node.children); // Uses spread syntax to "unpack" each child and include it at the front of arr one by one instead of as a group (i.e. nested array)
+
+      fn(node); // Pass the given node into the provided function
+    }
+  }
 }
 
 /* 
 In traverseBF, the for...of loop can be replaced with the spread syntax, like this: arr.push(...node.children); Each child will be pushed individually to arr.
+*/
+/*
+In traverseDF, the tests don't pass if you replace arr.unshift(...node.children); with this for loop below because the order of elements from right to left in the tree is not preserved:
+
+    for (let child of node.children) {
+        arr.unshift(child);
+    }
+
+Instead, a manual for loop can be used to iterate over node.children from end to start so that the elemets can enter the front of arr with their "right to left" order in the tree preserved:
+
+    for (let i = node.children.length - 1; i >= 0; i--) {
+        arr.unshift(node.children[i]);
+    }
+
 */
 
 module.exports = { Tree, Node };
