@@ -35,6 +35,18 @@ class Node {
       }
     }
   }
+
+  contains(data) {
+    if (this.data === data) {
+      return this; // Return the entire node represented by this
+    }
+    if (this.data < data && this.right) {
+      return this.right.contains(data); // recursive call
+    } else if (this.data > data && this.left) {
+      return this.left.contains(data); // recursive call
+    }
+    return null; // Accounts for data not matching any in the tree
+  }
 }
 
 module.exports = Node;
