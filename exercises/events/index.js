@@ -21,7 +21,16 @@ class Events {
 
   // Trigger all callbacks associated
   // with a given eventName
-  trigger(eventName) {}
+  trigger(eventName) {
+    // If an event is defined at the given eventName in the events object,
+    // then iterate over the eventName's array of callbacks using for...of loop
+    // and invoke each given callback function.
+    if (this.events[eventName]) {
+      for (let callback of this.events[eventName]) {
+        callback();
+      }
+    }
+  }
 
   // Remove all event handlers associated
   // with the given eventName
