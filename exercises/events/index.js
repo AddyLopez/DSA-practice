@@ -4,8 +4,20 @@
 // have methods 'on', 'trigger', and 'off'.
 
 class Events {
+  constructor() {
+    this.events = {};
+  }
+
   // Register an event handler
-  on(eventName, callback) {}
+  on(eventName, callback) {
+    if (this.events[eventName]) {
+      // The given eventName exists in the events object, so push the callback into the array
+      this.events[eventName].push(callback);
+    } else {
+      // The given eventName is new, so create an array at that property with the callback as an element
+      this.events[eventName] = [callback];
+    }
+  }
 
   // Trigger all callbacks associated
   // with a given eventName
