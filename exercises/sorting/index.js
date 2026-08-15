@@ -49,6 +49,12 @@ function merge(left, right) {
   }
 
   return [...results, ...left, ...right];
+  /*
+  - Creates a new empty array. adds everything from results, then from left, then from right. Same as calling concat() multiple times.
+  - It joins any elements remaining in left or right arrays and adds them to the results array.
+  - It doesn't matter whether ...left or ...right comes first because by the time the while loop is exited, either left or right will be empty.
+  - All remaining values in left or right are greater than the elements in the results array.
+  */
 }
 
 module.exports = { bubbleSort, selectionSort, mergeSort, merge };
