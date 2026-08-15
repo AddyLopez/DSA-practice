@@ -35,7 +35,18 @@ function selectionSort(arr) {
   return arr; // Return sorted array (from least to greatest)
 }
 
-function mergeSort(arr) {}
+function mergeSort(arr) {
+  // Base case: array can't be further subdivided, so return the array.
+  if (arr.length === 1) {
+    return arr;
+  }
+
+  const center = Math.floor(arr.length / 2); // center is index of midpoint element of arr
+  const left = arr.slice(0, center); // left is an array of elements from arr from index 0 up to but excluding center
+  const right = arr.slice(center); // right is an array of elements from arr from index center up to end of arr
+
+  return merge(mergeSort(left), mergeSort(right)); // recursive call will eventually return sorted results array
+}
 
 function merge(left, right) {
   const results = [];
